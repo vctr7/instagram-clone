@@ -35,9 +35,23 @@
 }
 
 .Header-searchbar input {
-    /* background-color: #FAFAFA; */
+    background-color: #FAFAFA;
+    border: solid 1px #dbdbdb;
+    border-radius: 3px;
+    padding: 3px;
     width: 199px;
     height: 18px;
+    text-decoration: black;
+    outline: none;
+}
+.Header-searchbar input::placeholder{
+    color: #a4a7aa;
+    text-align: center;
+    background-image: url(https://www.pngkit.com/png/full/14-140989_free-icons-png-instagram-search-icon-white.png);
+    background-position: 65px;
+    background-size: 10px 10px;
+    background-repeat: no-repeat;
+    font-weight: lighter;
 }
 .Header-menu {
     height: 22px;

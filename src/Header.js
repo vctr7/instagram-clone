@@ -11,7 +11,7 @@ class Header extends Component {
                     </div>
 
                     <div className="Header-searchbar">
-                        <input />
+                        <input type="text" autoCapitalize="none" placeholder="Search"/>
                     </div>
 
                     <div className="Header-menu">
