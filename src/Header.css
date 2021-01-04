@@ -1,0 +1,72 @@
+.Header {
+    background-color: white;
+    height: 53px;
+    border-bottom: solid 1px #dbdbdb;
+
+}
+
+.Header-contents {
+    margin: auto;
+    width: 975px;
+    /* text-align: center; */
+    display: flex;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    
+}
+
+.Header-logo {
+    height: 36px;
+    width: 360px;
+    margin-top: 8px;
+}
+
+.Header-logo img {
+    height: 29px;
+    width: 103px;
+}
+
+.Header-searchbar {
+    /* background-color: #FAFAFA; */
+    width: 215px;
+    height: 28px;
+    margin-top:13px;
+}
+
+.Header-searchbar input {
+    /* background-color: #FAFAFA; */
+    width: 199px;
+    height: 18px;
+}
+.Header-menu {
+    height: 22px;
+    width: 360px;
+    margin-top: 16px;
+    text-align: right;
+
+
+}
+.Menu {
+    height: 22px;
+    width: 222px;
+    display: flex;
+    margin-left: 24px;
+    float: right;
+}
+
+.Profile {
+    margin-left: 25px;
+}
+
+.Activity_Feed{
+    margin-left: 25px;
+}
+
+.Find_People{
+    margin-left: 25px;
+}
+
+.Direct{
+    margin-left: 25px;
+}
