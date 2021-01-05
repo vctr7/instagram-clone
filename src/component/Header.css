@@ -67,6 +67,11 @@
 .Profile {
     margin-left: 25px;
 }
+.Profile img{
+    object-fit: cover;
+    border-radius: 50%;
+}
+
 
 .Activity_Feed{
     margin-left: 25px;

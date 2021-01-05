@@ -13,7 +13,13 @@ function App() {
         <div className="App">
           <Header className="Header"/>
         </div>
-        <Post></Post>
+        <div>
+          <Post/>
+          <Post/>
+          <Post/>
+          <Post/>
+        </div>
+        
       </Route>
       <Route path="/direct" component={Direct}/>
       <Route path="/explore" component={Explore}/>

@@ -1,15 +1,52 @@
 import React, { Component } from 'react';
 import "./Post.css";
 
+
+// const Search = () => {
+    
+//     const onClick = () => setShowResults(true)
+//     return (
+//       <div>
+//         <input type="submit" value="Search" onClick={onClick} />
+//         { showResults ? <Show /> : <Hide /> }
+//       </div>
+//     )
+// };
+
+
+
 class Post extends Component {
+    constructor() {
+        // super(props);
+        super();
+        this.state = {
+            show: false,
+        }
+    }
+    handleClick = () => {
+        // console.log("click");
+        this.setState({
+            show: true
+        })
+    };
+
     render() {
+        let button = null;
+        
+        if (this.state.show) {
+            button = null;
+        }
+        else {
+            button = <button onClick={this.handleClick}>{"more"}</button>
+        }
+
         return (
             <div className="Post">
                 <header>
                     <div className="HeaderUserImg">
-                        <img  alt="" class="_6q-tv" width="32" height="32" data-testid="user-avatar" draggable="false" src="https://scontent-ssn1-1.cdninstagram.com/v/t51.2885-19/s150x150/69320658_499968874134656_3492344513760854016_n.jpg?_nc_ht=scontent-ssn1-1.cdninstagram.com&amp;_nc_ohc=UELlE86fzV8AX_nMguH&amp;tp=1&amp;oh=1f5452e2c1dca76f8064089d3a9c1905&amp;oe=601BBEA8"/>
+                        <img alt="" class="_6q-tv" width="32" height="32" data-testid="user-avatar" draggable="false" src="https://scontent-ssn1-1.cdninstagram.com/v/t51.2885-19/s150x150/69320658_499968874134656_3492344513760854016_n.jpg?_nc_ht=scontent-ssn1-1.cdninstagram.com&amp;_nc_ohc=UELlE86fzV8AX_nMguH&amp;tp=1&amp;oh=1f5452e2c1dca76f8064089d3a9c1905&amp;oe=601BBEA8"/>
                     </div>                        
-                    <div className="HeaderUserID"><h5>vctr</h5></div>
+                    <div className="HeaderUserID">vctr</div>
                     <div className="HeaderIcon">
                         <svg aria-label="More options" class="_8-yf5 " fill="#262626" height="16" viewBox="0 0 48 48" width="16"><circle clip-rule="evenodd" cx="8" cy="24" fill-rule="evenodd" r="4.5"></circle><circle clip-rule="evenodd" cx="24" cy="24" fill-rule="evenodd" r="4.5"></circle><circle clip-rule="evenodd" cx="40" cy="24" fill-rule="evenodd" r="4.5"></circle></svg>
                     </div>
@@ -41,8 +78,14 @@ class Post extends Component {
                     <div className="UserID">
                         vctr
                     </div>
-                    <div className="UserComment">
-                        새해 복 많이 받으세요~
+                    <div className="Comment">
+                        {
+                        this.state.show 
+                        ? <div className="UserComment">show 새해 복 많이 받으세요~마바사ㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷ
+                        sㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷ</div> 
+                        : <div className="UserCommentHide">hide 새해 복 많이 받으세요~마바사ㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷ</div>
+                        }
+                        {button}
                     </div>
                 </div>
 
@@ -51,8 +94,8 @@ class Post extends Component {
                         daniel_likees
                     </div>
                     <div className="GuestComment">
-                        ㄷㄷ
-                    </div>
+                        가나다라 마바사ㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷ
+                   </div>
                     <div className="CommentLike">
                         <svg aria-label="Like" class="_8-yf5 " fill="#262626" height="12" viewBox="0 0 48 48" width="12"><path d="M34.6 6.1c5.7 0 10.4 5.2 10.4 11.5 0 6.8-5.9 11-11.5 16S25 41.3 24 41.9c-1.1-.7-4.7-4-9.5-8.3-5.7-5-11.5-9.2-11.5-16C3 11.3 7.7 6.1 13.4 6.1c4.2 0 6.5 2 8.1 4.3 1.9 2.6 2.2 3.9 2.5 3.9.3 0 .6-1.3 2.5-3.9 1.6-2.3 3.9-4.3 8.1-4.3m0-3c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5.6 0 1.1-.2 1.6-.5 1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z"></path></svg>
                     </div>

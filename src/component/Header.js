@@ -10,7 +10,7 @@ class Header extends Component {
                 <div className="Header-contents">
                     <div className="Header-logo">
                         <Link to="/">
-                            <img src="https://www.instagram.com/static/images/web/mobile_nav_type_logo-2x.png/1b47f9d0e595.png" className="Header-logo" alt=""/>
+                            <img src="https://www.instagram.com/static/images/web/mobile_nav_type_logo-2x.png/1b47f9d0e595.png" className="Header-logo" draggable="false" alt=""/>
                         </Link>
                     </div>
 
@@ -50,9 +50,7 @@ class Header extends Component {
                                     <img alt="" class="_6q-tv" width="22" height="22" data-testid="user-avatar" draggable="false" src="https://scontent-ssn1-1.cdninstagram.com/v/t51.2885-19/s150x150/69320658_499968874134656_3492344513760854016_n.jpg?_nc_ht=scontent-ssn1-1.cdninstagram.com&amp;_nc_ohc=UELlE86fzV8AX_nMguH&amp;tp=1&amp;oh=1f5452e2c1dca76f8064089d3a9c1905&amp;oe=601BBEA8"/>
                                 </span>
                             </div>
-
                         </div>
-
                     </div>
                 </div>
             </div>
