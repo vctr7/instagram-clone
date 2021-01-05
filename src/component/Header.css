@@ -2,18 +2,14 @@
     background-color: white;
     height: 53px;
     border-bottom: solid 1px #dbdbdb;
-
 }
 
 .Header-contents {
     margin: auto;
     width: 975px;
-    /* text-align: center; */
     display: flex;
     padding-left: 20px;
     padding-right: 20px;
-
-    
 }
 
 .Header-logo {
@@ -28,7 +24,6 @@
 }
 
 .Header-searchbar {
-    /* background-color: #FAFAFA; */
     width: 215px;
     height: 28px;
     margin-top:13px;
@@ -44,6 +39,7 @@
     text-decoration: black;
     outline: none;
 }
+
 .Header-searchbar input::placeholder{
     color: #a4a7aa;
     text-align: center;
@@ -51,16 +47,15 @@
     background-position: 65px;
     background-size: 10px 10px;
     background-repeat: no-repeat;
-    font-weight: lighter;
 }
+
 .Header-menu {
     height: 22px;
     width: 360px;
     margin-top: 16px;
     text-align: right;
-
-
 }
+
 .Menu {
     height: 22px;
     width: 222px;

@@ -1,11 +1,22 @@
-import './Header.css'
 import './App.css';
-import Header from './Header';
+import { Route } from 'react-router-dom';
+import Header from './component/Header';
+import Post from './component/Post';
+
+import Direct from './page/Direct';
+import Explore from './page/Explore';
 
 function App() {
   return (
-    <div className="App">
-      <Header className="Header"/>
+    <div>
+      <Route path="/" exact>
+        <div className="App">
+          <Header className="Header"/>
+        </div>
+        <Post></Post>
+      </Route>
+      <Route path="/direct" component={Direct}/>
+      <Route path="/explore" component={Explore}/>
     </div>
   );
 }
