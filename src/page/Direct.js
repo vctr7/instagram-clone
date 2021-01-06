@@ -7,6 +7,10 @@ class Direct extends Component {
             <div>
                 <Header/>
                 <div>Direct Page</div>
+                <div>Direct Page</div>
+                <div>Direct Page</div>
+                <div>Direct Page</div>
+                <div>Direct Page</div>
             </div>
         );
     }

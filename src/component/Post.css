@@ -4,6 +4,9 @@
     border:solid 1px #dbdbdb;
     border-radius: 3px;
     background-color: white;
+    margin: auto;
+    margin-top: 60px;
+    /* position: relative; */
 }
 
 .Post header {
@@ -20,14 +23,19 @@
 }
 
 .HeaderUserID {
-    margin-top: 0px;
     margin-top: 20px;
     font-weight:600;
+    width: 525px;
 }
 
 .HeaderIcon {
     margin-top: 20px;
-    margin-left: 495px;
+}
+
+.PostImg img{
+    text-align: center;
+    max-height: 614px;
+    max-width: 614px;
 }
 
 .Info {
@@ -107,21 +115,28 @@
 .GuestSection{
     padding-right: 10px;
     padding-left: 10px; 
+}
+.GuestPartition{
     display: flex;
+}
+.GuestInfo{
+    display: flex;
+    width: 570px;
 }
 .GuestId {
     padding-left: 6px;
     font-weight:600;
+    max-width:100px;
 }
 .GuestComment{
     padding-left: 5px;
-    width: 460px;
+    max-width: 420px;
     /* text-overflow:ellipsis;
     white-space:nowrap; 
     overflow:hidden */
 }
-.CommentLike{
-    padding-left: 10px;
+.CommentLike {
+    padding-left: 5px;
 }
 
 .Time {

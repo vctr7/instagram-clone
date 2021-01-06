@@ -2,6 +2,11 @@
     background-color: white;
     height: 53px;
     border-bottom: solid 1px #dbdbdb;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
 }
 
 .Header-contents {
