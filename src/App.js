@@ -95,7 +95,7 @@ function App() {
               postImg={post.postImg} 
               caption={post.caption} 
               comments={post.comments} 
-              urTime={post.curTime} 
+              curTime={post.curTime} 
             />
           ))}
         </div>
