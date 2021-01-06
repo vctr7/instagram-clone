@@ -9,8 +9,7 @@ class Post extends Component {
         }
     };
 
-    handleClick = () => {
-        // console.log("click");
+    moreComment = () => {
         this.setState({
             show: true
         })
@@ -26,7 +25,7 @@ class Post extends Component {
             button = null;
         }
         else {
-            button = <button onClick={this.handleClick}>{"more"}</button>
+            button = <button onClick={this.moreComment}>{"more"}</button>
         }
 
         return (

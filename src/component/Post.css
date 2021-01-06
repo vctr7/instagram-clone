@@ -1,12 +1,10 @@
 .Post {
     width: 614px;
-    /* height: 889px; */
     border:solid 1px #dbdbdb;
     border-radius: 3px;
     background-color: white;
-    margin: auto;
     margin-top: 60px;
-    /* position: relative; */
+    position: relative;
 }
 
 .Post header {
@@ -36,6 +34,8 @@
     text-align: center;
     max-height: 614px;
     max-width: 614px;
+    min-width: 614px;
+    min-height: 614px;;
 }
 
 .Info {

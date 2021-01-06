@@ -1,0 +1,22 @@
+.Account {
+    display: flex;
+}
+
+.AccountFont {
+    height: 56px;
+    margin-left: 10px;
+    margin-top: 10px;
+    font-weight: 500;
+    font-size: small;
+}
+.AccountEmail {
+    opacity: 60%;
+}
+
+.Account img {
+    object-fit: cover;
+    border-radius: 50%;
+    width:56px;
+    height: 56px;
+
+}
