@@ -1,0 +1,51 @@
+.UploadModule {
+    margin-top: 5px;
+    /* display: flex; */
+}
+.UploadSection {
+    /* max-width: 210px; */
+}
+.Caption {
+    margin-top: 20px;
+    border: none;
+    height: 10px;
+    width: 290px;
+    background-color: #fafafa;
+    outline: none;
+    /* overflow: auto; */
+    white-space: normal;
+}
+
+.ProgressBar {
+    margin-top: 15px;
+    margin-bottom: 1px;
+
+    width: 290px;
+}
+
+.FilePicker {
+    margin-top: 10px;
+
+    /* margin-top: 15px; */
+    /* opacity: 0; */
+    /* cursor:pointer; */
+    border: none;
+}
+
+.BooleanCheck {
+
+}
+
+.UploadChecker {
+    /* margin-left : 5px; */
+    
+}
+.Checker {
+    display: flex;
+    
+}
+.RequiredColor {
+    margin-left: 5px;
+    color: red;
+    display: flex;
+}

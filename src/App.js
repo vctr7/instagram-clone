@@ -9,6 +9,7 @@ import { Button, Input } from '@material-ui/core/'
 import Header from './component/Header';
 import Post from './component/Post';
 import Account from './component/Account';
+import ImageUpload from './component/ImageUpload';
 
 import Direct from './page/Direct';
 import Explore from './page/Explore';
@@ -45,6 +46,7 @@ function App() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [user, setUser] = useState(null);
+  const [userImg, setUserImg] = useState('https://image.gamechosun.co.kr/wlwl_upload/dataroom/df/2017/09/05/490022_1504544287.jpg');
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
@@ -62,7 +64,7 @@ function App() {
   }, [user, username]);
 
   useEffect(() => {
-    db.collection('posts').onSnapshot(snapshot => {
+    db.collection('posts').orderBy("timestamp", 'desc').onSnapshot(snapshot => {
       setPosts(snapshot.docs.map(doc => ({
         id: doc.id,
         post: doc.data()
@@ -70,21 +72,22 @@ function App() {
     })
   }, []); 
 
-  const signUp = (event) => {
-    event.preventDefault();
+  const signUp = (e) => {
+    e.preventDefault();
 
     auth
       .createUserWithEmailAndPassword(email, password)
       .then((authUser) => {
         return authUser.user.updateProfile({
           displayName: username,
+          photoURL: userImg,
         });
       })
       .catch((error) => alert(error.message));
   }
 
-  const signIn = (event) => {
-    event.preventDefault();
+  const signIn = (e) => {
+    e.preventDefault();
 
     auth
       .signInWithEmailAndPassword(email, password)
@@ -99,7 +102,7 @@ function App() {
       <Modal
         open={open}
         onClose={() => {setOpen(false)}}
-      >
+      > 
         <div style={modalStyle} className={classes.paper}>
           <form>
             <center className="SignUp">
@@ -162,11 +165,13 @@ function App() {
             {posts.map(({id, post}) => (
               <Post
                 key={id} 
+                postId={id}
+                user={user}
                 userImg={post.userImg} 
                 username={post.username} 
                 postImg={post.postImg} 
                 caption={post.caption} 
-                comments={post.comments} 
+                // comments={post.comments} 
                 curTime={post.curTime} 
               />
             ))}
@@ -176,6 +181,7 @@ function App() {
             ? <div>
               <Account username={user.displayName} email={user.email}/>
               <Button onClick={() => auth.signOut()}>Log Out</Button>
+              <ImageUpload className="UploadModule" username={user.displayName} userImg={user.photoURL}/>
               </div>
             : <div className="LoginContainer">
               <Button onClick={() => setOpenSingIn(true)}>Sign In</Button>
