@@ -36,10 +36,10 @@
 }
 .PostImg img{
     text-align: center;
-    max-height: 616px;
+    max-height: 614px;
     max-width: 614px;
-    /* min-width: 614px;
-    min-height: 614px;; */
+    /* min-width: 614px; */
+    /* min-height: 614px; */
 }
 
 .Info {
@@ -178,5 +178,12 @@
     font-weight: 600;    
     color: #0095f6;
     /* opacity: 40%; */
+}
+.NoCommnet {
+    background-color: rgba(0,0,0,0);
+    border: none;
+    font-weight: 600;    
+    color: #0095f6;
+    opacity: 40%;
 }
 

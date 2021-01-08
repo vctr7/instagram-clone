@@ -1,4 +1,5 @@
 import './App.css';
+import firebase from 'firebase';
 import { useState, useEffect } from 'react';
 import { Route } from 'react-router-dom';
 import { db, auth } from './firebase';
@@ -46,7 +47,10 @@ function App() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [user, setUser] = useState(null);
-  const [userImg, setUserImg] = useState('https://image.gamechosun.co.kr/wlwl_upload/dataroom/df/2017/09/05/490022_1504544287.jpg');
+
+  const [userImg] = useState('https://image.gamechosun.co.kr/wlwl_upload/dataroom/df/2017/09/05/490022_1504544287.jpg');
+
+  const logoUrl = "https://www.instagram.com/static/images/web/mobile_nav_type_logo-2x.png/1b47f9d0e595.png";
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
@@ -67,7 +71,7 @@ function App() {
     db.collection('posts').orderBy("timestamp", 'desc').onSnapshot(snapshot => {
       setPosts(snapshot.docs.map(doc => ({
         id: doc.id,
-        post: doc.data()
+        post: doc.data(),
       })));
     })
   }, []); 
@@ -106,7 +110,7 @@ function App() {
         <div style={modalStyle} className={classes.paper}>
           <form>
             <center className="SignUp">
-              <img src="https://www.instagram.com/static/images/web/mobile_nav_type_logo-2x.png/1b47f9d0e595.png" className="Header-logo" draggable="false" alt=""/>
+              <img src={logoUrl} className="Header-logo" draggable="false" alt=""/>
               <Input
                 type="text"
                 placeholder="username"
@@ -137,7 +141,7 @@ function App() {
         <div style={modalStyle} className={classes.paper}>
           <form>
             <center className="SignIn">
-              <img src="https://www.instagram.com/static/images/web/mobile_nav_type_logo-2x.png/1b47f9d0e595.png" className="Header-logo" draggable="false" alt=""/>
+              <img src={logoUrl} className="Header-logo" draggable="false" alt=""/>
               <Input
                 type="text"
                 placeholder="email"
@@ -155,12 +159,11 @@ function App() {
           </form>
         </div>
       </Modal>  
-        <div className="AppHeader">
-          <Header className="Header"/>
+        <div>
+          <Header logoUrl={logoUrl}/>
         </div>
 
         <div className="AppBody">
-          
           <div className="AppPost">
             {posts.map(({id, post}) => (
               <Post
@@ -171,21 +174,28 @@ function App() {
                 username={post.username} 
                 postImg={post.postImg} 
                 caption={post.caption} 
-                // comments={post.comments} 
-                curTime={post.curTime} 
+                likes={post.likes}
+                likeNum={post.likeNum}
+                count={post.count}
+                // createdTime={diff(post.timestamp)}
               />
             ))}
           </div>
+          
           <div className="AccountModule"> 
             {user 
-            ? <div>
-              <Account username={user.displayName} email={user.email}/>
-              <Button onClick={() => auth.signOut()}>Log Out</Button>
-              <ImageUpload className="UploadModule" username={user.displayName} userImg={user.photoURL}/>
+            ? <div className="true">
+                <div className="trueinfo">
+                  <Account username={user.displayName} email={user.email}/>
+                  <Button onClick={() => auth.signOut()}>Log Out</Button>
+                </div>
+                <div>
+                  <ImageUpload username={user.displayName} userImg={user.photoURL}/>
+                </div>
               </div>
             : <div className="LoginContainer">
-              <Button onClick={() => setOpenSingIn(true)}>Sign In</Button>
-              <Button onClick={() => setOpen(true)}>Sign Up</Button>
+                <Button onClick={() => setOpenSingIn(true)}>Sign In</Button>
+                <Button onClick={() => setOpen(true)}>Sign Up</Button>
               </div>
             }
           </div>

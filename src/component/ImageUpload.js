@@ -8,7 +8,7 @@ function ImageUpload({ username, userImg }){
     const [caption, setCaption] = useState('');
     const [image, setImage] = useState(null);
     const [progress, setProgress] = useState(0);
-    let postCheck = false;
+
     const handleChange = (e) => {
         if (e.target.files[0]){
             setImage(e.target.files[0]);
@@ -38,8 +38,9 @@ function ImageUpload({ username, userImg }){
                         caption: caption,
                         postImg: url,
                         username: username,
-                        comments:[],
-                        userImg: userImg
+                        likes: [],
+                        likeNum: 0,
+                        count: 0,
                     });
                     setProgress(0);
                     setCaption("");
@@ -50,24 +51,23 @@ function ImageUpload({ username, userImg }){
         )
     }
 
-    
-    if (image && caption) {
-        postCheck = true;
-    }
-
 
     return (
         <div className="UploadModule">
             <div className="UploadSection">                
                 <input className="Caption" type="text" placeholder="Enter a caption..." onChange={event => setCaption(event.target.value)} value={caption}></input>
-                <input className="FilePicker" type="file" onChange={handleChange}></input>
-                <small>{progress}%</small>
+                <br/>
                 <progress className="ProgressBar" value={progress} max="100"></progress>
+                <br/>
+                <input className="FilePicker" type="file" onChange={handleChange}></input>
+                
+                <small>{progress}%</small>
+                
             </div>
 
-            <div className="BooleanCheck">
-                {postCheck 
-                ? <div><Button className="UploadButton" onClick={handleUpload}>POST</Button></div>
+            <div>
+                {image && caption 
+                ? <div><Button onClick={handleUpload}>POST✅</Button></div>
                 : <div><Button>POST🚫</Button></div>
                 }
                 <div className="UploadChecker">
