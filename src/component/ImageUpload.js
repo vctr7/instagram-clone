@@ -40,12 +40,10 @@ function ImageUpload({ username, userImg }){
                         username: username,
                         likes: [],
                         likeNum: 0,
-                        count: 0,
                     });
                     setProgress(0);
                     setCaption("");
                     setImage(null);
-                
                 })
             }
         )
