@@ -275,6 +275,7 @@ function Post({
             <div className="GuestSection">
                 {comments.map(({ id, comment }) => (
                     <Comment
+                        key={id}
                         postId={postId}
                         user={user}
                         commentId={id}

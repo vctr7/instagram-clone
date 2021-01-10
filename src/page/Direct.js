@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
 import Header from '../component/Header';
 
-class Direct extends Component {
-    render() {
-        return (
-            <div>
-                <Header/>
-                <div>Direct Page</div>
-                <div>Direct Page</div>
-                <div>Direct Page</div>
-                <div>Direct Page</div>
-                <div>Direct Page</div>
-            </div>
-        );
-    }
+
+function Direct({logoUrl, user, userImgUrl}) {
+    return (
+        <div>
+            <Header location={"direct"} logoUrl={logoUrl} user={user} userImgUrl={userImgUrl} />
+            <div>Direct Page</div>
+            <div>Direct Page</div>
+            <div>Direct Page</div>
+            <div>Direct Page</div>
+            <div>Direct Page</div>
+        </div>
+    );   
 }
 
 export default Direct;
