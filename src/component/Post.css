@@ -122,7 +122,7 @@
     cursor: pointer;
 }
 
-.Time {
+/* .Time {
     padding-left: 10px;
     border-bottom: solid 1px #f1f1f1;
     padding: 10px;
@@ -131,7 +131,7 @@
     padding-left: 6px;
     opacity: 60%;
     font-size: 8pt;
-}
+} */
 
 .AddComment{
     height: 56px;
@@ -152,14 +152,14 @@
 
 }
 .AddComment button{
-    background-color: rgba(0,0,0,0);
+    background-color:white;
     border: none;
     font-weight: 600;    
     color: #0095f6;
     /* opacity: 40%; */
 }
-.NoCommnet {
-    background-color: rgba(0,0,0,0);
+.NoComment {
+    background-color: white;
     border: none;
     font-weight: 600;    
     color: #0095f6;

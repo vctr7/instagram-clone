@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { db } from '../firebase';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
 import Comment from './Comment';
 import './Post.css';
 
@@ -288,9 +288,9 @@ function Post({
                 ))}
             </div>
 
-            <div className="Time">
-                <div className="TimePass">{/* {String(time)} */}</div>
-            </div>
+            {/* <div className="Time">
+                <div className="TimePass">{String(time)}</div>
+            </div> */}
 
             <div className="AddComment">
                 <input
@@ -309,7 +309,7 @@ function Post({
                         Post
                     </button>
                 ) : (
-                    <button className="NoCommnet">Post</button>
+                    <button className="NoComment">Post</button>
                 )}
             </div>
         </div>

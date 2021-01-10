@@ -258,7 +258,9 @@ function App() {
                                         userImgUrl={userImgUrl}
                                     />
                                 </div>
-                                <Footer/>
+                                <div className="Foot">
+                                    © 2021 INSTAGRAM CLONE FROM VCTR
+                                </div>
                             </div>
                         ) : (
                             <div className="LoginContainer">
@@ -268,9 +270,12 @@ function App() {
                                 <Button onClick={() => setOpen(true)}>
                                     Sign Up
                                 </Button>
-                                <Footer />
+                                <div className="Foot">
+                                    © 2021 INSTAGRAM CLONE FROM VCTR
+                                </div>
                             </div>
                         )}
+
                     </div>
                 </div>
             </Route>
