@@ -1,0 +1,27 @@
+.GuestSection{
+    padding-right: 10px;
+    padding-left: 10px; 
+}
+.GuestPartition{
+    display: flex;
+}
+.GuestInfo{
+    display: flex;
+    width: 570px;
+}
+.GuestId {
+    padding-left: 6px;
+    font-weight:600;
+    max-width:100px;
+}
+.GuestComment{
+    padding-left: 5px;
+    max-width: 420px;
+    /* text-overflow:ellipsis;
+    white-space:nowrap; 
+    overflow:hidden */
+}
+.CommentLike {
+    padding-left: 5px;
+    /* position: relative; */
+}
