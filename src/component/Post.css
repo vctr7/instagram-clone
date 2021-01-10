@@ -81,8 +81,11 @@
 }
 .LikedUser{
     padding-left: 5px;
+    display: flex;
 }
-
+.LikedUserList{
+    font-weight: 600;   
+}
 
 .UserBoard {
     padding-right: 10px;

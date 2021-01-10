@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Comment.css';
 import { db } from '../firebase';
 

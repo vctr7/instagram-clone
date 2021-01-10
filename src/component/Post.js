@@ -19,11 +19,15 @@ function Post({
     const [comments, setComments] = useState([]);
     const [comment, setComment] = useState('');
     const [show, setShow] = useState(false);
-
-    const moreCaption = () => {
-        setShow(true);
-    };
-
+    function getTextWidth(text, font) {
+        var canvas =
+            getTextWidth.canvas ||
+            (getTextWidth.canvas = document.createElement('canvas'));
+        var context = canvas.getContext('2d');
+        context.font = font;
+        var metrics = context.measureText(text);
+        return Math.round(metrics.width);
+    }
     useEffect(() => {
         let unsubscribe;
         if (postId) {
@@ -67,16 +71,15 @@ function Post({
         e.preventDefault();
 
         if (likes.includes(user.displayName)) {
-            const temp = likes.splice();
-            const idx = temp.indexOf(user.displayName);
-            temp.splice(idx, 1);
+            const idx = likes.indexOf(user.displayName);
+            likes.splice(idx, 1);
             if (likeNum < 1) {
                 likeNum = 1;
             }
             db.collection('posts')
                 .doc(postId)
                 .update({
-                    likes: temp,
+                    likes: likes,
                     likeNum: likeNum - 1,
                 });
         } else {
@@ -219,20 +222,52 @@ function Post({
             </div>
 
             <div className="Liked">
-                <div className="LikedBy">Liked by </div>
-                <div className="LikedUser"> asddasd and others</div>
+                {likes.length > 0 ? (
+                    <>
+                        <div className="LikedBy">Liked by </div>
+                        <div className="LikedUser">
+                            {likes.map((like, i) => {
+                                if (i === likes.length - 1) {
+                                    return (
+                                        <div className="LikedUserList">
+                                            {like}
+                                        </div>
+                                    );
+                                } else {
+                                    return (
+                                        <>
+                                            <div className="LikedUserList">
+                                                {like}
+                                            </div>
+                                            ,&nbsp;
+                                        </>
+                                    );
+                                }
+                            })}
+                        </div>
+                    </>
+                ) : null}
             </div>
 
             <div className="UserBoard">
                 <div className="UserID">{username}</div>
                 <div className="Comment">
-                    {show ? (
+                    {getTextWidth(caption, 10 + 'px') < 300 ? (
                         <div className="UserComment">{caption}</div>
                     ) : (
-                        <div className="UserCommentHide">{caption}</div>
-                    )}
-                    {show ? null : (
-                        <button onClick={moreCaption}>{'more'}</button>
+                        <div className="Comment">
+                            {show ? (
+                                <div className="UserComment">{caption}</div>
+                            ) : (
+                                <div className="UserCommentHide">{caption}</div>
+                            )}
+
+                            {show ? null : (
+                                <button onClick={() => setShow(true)}>
+                                    {'more'}
+                                </button>
+                            )}
+                        </div>
                     )}
                 </div>
             </div>
