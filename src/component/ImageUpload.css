@@ -26,9 +26,9 @@
     border: none;
 }
 
-.UploadChecker {
-    /* margin-left : 5px; */
-    
+.UploadChecker{
+    opacity: 60%;
+    font-size: 9pt;
 }
 .Checker {
     display: flex;

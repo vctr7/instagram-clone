@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Header from '../component/Header';
 
 function Explore({ logoUrl, user, userImgUrl }) {

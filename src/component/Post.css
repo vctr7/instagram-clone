@@ -54,6 +54,7 @@
     padding-top: 6px;
     padding-bottom: 4px;
     padding-left: 6px;
+    cursor: pointer;
 }
 .SeeComment {
     padding-top: 6px;
@@ -118,6 +119,7 @@
     background-color: rgba(0,0,0,0);
     border: none;
     opacity: 40%;
+    cursor: pointer;
 }
 
 .Time {

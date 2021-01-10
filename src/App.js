@@ -1,5 +1,4 @@
 import './App.css';
-import firebase from 'firebase';
 import { useState, useEffect } from 'react';
 import { Route } from 'react-router-dom';
 import { db, auth, storage } from './firebase';
@@ -11,6 +10,7 @@ import Header from './component/Header';
 import Post from './component/Post';
 import Account from './component/Account';
 import ImageUpload from './component/ImageUpload';
+import Footer from './component/Footer';
 
 import Direct from './page/Direct';
 import Explore from './page/Explore';
@@ -85,58 +85,32 @@ function App() {
 
     const signUp = (e) => {
         e.preventDefault();
-        const uploadTask = storage
-            .ref(`profileImage/${userImg.name}`)
-            .put(userImg);
-        uploadTask.on(
-            'state changed',
-            (snapshot) => {
-                const ratio = Math.round(
-                    (snapshot.bytesTransferred / snapshot.totalBytes) * 100,
-                );
-                // setProgress(ratio);
-            },
-            (error) => {
-                console.log(error);
-                alert(error.message);
-            },
-            () => {
-                storage
-                    .ref('profileImage')
-                    .child(userImg.name)
-                    .getDownloadURL()
-                    .then((url) => {
-                        alert(url);
-                        auth.createUserWithEmailAndPassword(email, password)
-                            .then((authUser) => {
-                                alert('success');
-                                return authUser.user.updateProfile({
-                                    displayName: username,
-                                    photoURL: url,
-                                });
-                            })
-                            .catch((error) => alert(error.message));
+        storage.ref(`profileImage/${userImg.name}`).put(userImg);
+
+        storage
+            .ref('profileImage')
+            .child(userImg.name)
+            .getDownloadURL()
+            .then((url) => {
+                auth.createUserWithEmailAndPassword(email, password)
+                    .then((authUser) => {
+                        alert('register success');
+                        authUser.user.updateProfile({
+                            displayName: username,
+                            photoURL: url,
+                        });
                     })
-                    .then(
-                        auth.onAuthStateChanged((authUser) => {
-                            if (authUser) {
-                                console.log(authUser);
-                                setUser(authUser);
-                            } else {
-                                setUser(null);
-                            }
-                        }),
-                    );
-            },
-        );
+                    .catch((error) => alert(error.message));
+            });
+        setOpen(false);
     };
 
     const signIn = (e) => {
         e.preventDefault();
 
-        auth.signInWithEmailAndPassword(email, password).catch((error) =>
-            alert(error.message),
-        );
+        auth.signInWithEmailAndPassword(email, password)
+            .then(alert('login success'))
+            .catch((error) => alert(error.message));
         setOpenSingIn(false);
     };
 
@@ -242,7 +216,7 @@ function App() {
                         logoUrl={logoUrl}
                         user={user}
                         userImgUrl={userImgUrl}
-                        location={"/"}
+                        location={'/'}
                     />
                 </div>
 
@@ -284,6 +258,7 @@ function App() {
                                         userImgUrl={user.photoURL}
                                     />
                                 </div>
+                                <Footer></Footer>
                             </div>
                         ) : (
                             <div className="LoginContainer">
@@ -293,13 +268,33 @@ function App() {
                                 <Button onClick={() => setOpen(true)}>
                                     Sign Up
                                 </Button>
+                                <Footer></Footer>
                             </div>
                         )}
+                        {/* <div><Footer></Footer></div> */}
                     </div>
                 </div>
             </Route>
-            <Route path="/direct" render={() => <Direct  logoUrl={logoUrl} user={user} userImgUrl={userImgUrl}/>} />
-            <Route path="/explore" render={() => <Explore logoUrl={logoUrl} user={user} userImgUrl={userImgUrl}/>} />
+            <Route
+                path="/direct"
+                render={() => (
+                    <Direct
+                        logoUrl={logoUrl}
+                        user={user}
+                        userImgUrl={userImgUrl}
+                    />
+                )}
+            />
+            <Route
+                path="/explore"
+                render={() => (
+                    <Explore
+                        logoUrl={logoUrl}
+                        user={user}
+                        userImgUrl={userImgUrl}
+                    />
+                )}
+            />
         </div>
     );
 }

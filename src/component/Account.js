@@ -1,22 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Account.css';
 
-class Account extends Component {
-    constructor(){
-        super();
-    }
-    render() {
-        return (
-            <div className="Account">
-                <img alt="" draggable="false" src={this.props.userImgUrl}></img>
-                <div className="AccountFont">
-                    <strong>{this.props.username}</strong>
-                    <br/>
-                    <div className="AccountEmail">{this.props.email}</div>
-                </div>
+function Account({username, email, userImgUrl}) {
+    
+    return (
+        <div className="Account">
+            <img alt="" draggable="false" src={userImgUrl}></img>
+            <div className="AccountFont">
+                <strong>{username}</strong>
+                <br/>
+                <div className="AccountEmail">{email}</div>
             </div>
-        );
-    }
+        </div>
+    );
 }
 
 export default Account;

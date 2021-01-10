@@ -23,5 +23,6 @@
 }
 .CommentLike {
     padding-left: 5px;
+    cursor: pointer;
     /* position: relative; */
 }
