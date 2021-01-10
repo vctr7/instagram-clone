@@ -42,7 +42,7 @@ function App() {
     const [modalStyle] = useState(getModalStyle);
     const [posts, setPosts] = useState([]);
     const [open, setOpen] = useState(false);
-    const [openSignIn, setOpenSingIn] = useState('');
+    const [openSignIn, setOpenSingIn] = useState(false);
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -60,7 +60,7 @@ function App() {
             if (authUser) {
                 console.log(authUser);
                 setUser(authUser);
-                setUserImgUrl(user.photoURL);
+                // setUserImgUrl(user.photoURL);
             } else {
                 setUser(null);
             }
@@ -255,10 +255,10 @@ function App() {
                                 <div>
                                     <ImageUpload
                                         username={user.displayName}
-                                        userImgUrl={user.photoURL}
+                                        userImgUrl={userImgUrl}
                                     />
                                 </div>
-                                <Footer></Footer>
+                                <Footer/>
                             </div>
                         ) : (
                             <div className="LoginContainer">
@@ -268,10 +268,9 @@ function App() {
                                 <Button onClick={() => setOpen(true)}>
                                     Sign Up
                                 </Button>
-                                <Footer></Footer>
+                                <Footer />
                             </div>
                         )}
-                        {/* <div><Footer></Footer></div> */}
                     </div>
                 </div>
             </Route>

@@ -52,7 +52,7 @@ function Comment({
                     <svg
                         onClick={commentLikeButton}
                         aria-label="Unlike"
-                        class="_8-yf5 "
+                        // class="_8-yf5 "
                         fill="#ed4956"
                         height="12"
                         viewBox="0 0 48 48"
@@ -64,7 +64,7 @@ function Comment({
                     <svg
                         onClick={commentLikeButton}
                         aria-label="Like"
-                        class="_8-yf5 "
+                        // class="_8-yf5 "
                         fill="#262626"
                         height="12"
                         viewBox="0 0 48 48"

@@ -41,6 +41,7 @@ function Post({
                         snapshot.docs.map((comment) => ({
                             id: comment.id,
                             comment: comment.data(),
+                            key: comment.id
                         })),
                     );
                 });
@@ -98,7 +99,7 @@ function Post({
                 <div className="HeaderUserImg">
                     <img
                         alt=""
-                        class="_6q-tv"
+                        // class="_6q-tv"
                         width="32"
                         height="32"
                         data-testid="user-avatar"
@@ -110,7 +111,7 @@ function Post({
                 <div className="HeaderIcon">
                     <svg
                         aria-label="More options"
-                        class="_8-yf5 "
+                        // class="_8-yf5 "
                         fill="#262626"
                         height="16"
                         viewBox="0 0 48 48"
@@ -157,7 +158,7 @@ function Post({
                         <svg
                             onClick={postLikeButton}
                             aria-label="Unlike"
-                            class="_8-yf5 "
+                            // class="_8-yf5 "
                             fill="#ed4956"
                             height="24"
                             viewBox="0 0 48 48"
@@ -169,7 +170,7 @@ function Post({
                         <svg
                             onClick={postLikeButton}
                             aria-label="Like"
-                            class="_8-yf5 "
+                            // class="_8-yf5 "
                             fill="#262626"
                             height="24"
                             viewBox="0 0 48 48"
@@ -182,7 +183,7 @@ function Post({
                 <div className="SeeComment">
                     <svg
                         aria-label="Comment"
-                        class="_8-yf5 "
+                        // class="_8-yf5 "
                         fill="#262626"
                         height="24"
                         viewBox="0 0 48 48"
@@ -198,7 +199,7 @@ function Post({
                 <div className="Share">
                     <svg
                         aria-label="Share Post"
-                        class="_8-yf5 "
+                        // class="_8-yf5 "
                         fill="#262626"
                         height="24"
                         viewBox="0 0 48 48"
@@ -210,7 +211,7 @@ function Post({
                 <div className="Save">
                     <svg
                         aria-label="Save"
-                        class="_8-yf5 "
+                        // class="_8-yf5 "
                         fill="#262626"
                         height="24"
                         viewBox="0 0 48 48"
@@ -229,21 +230,22 @@ function Post({
                             {likes.map((like, i) => {
                                 if (i === likes.length - 1) {
                                     return (
-                                        <div className="LikedUserList">
+                                        <div className="LikedUserList" key={i + "true"}>
                                             {like}
                                         </div>
                                     );
                                 } else {
                                     return (
                                         <>
-                                            <div className="LikedUserList">
+                                            <div className="LikedUserList" key={i + "false"}>
                                                 {like}
                                             </div>
                                             ,&nbsp;
                                         </>
                                     );
                                 }
-                            })}
+                            }
+                            )}
                         </div>
                     </>
                 ) : null}
@@ -273,7 +275,7 @@ function Post({
             </div>
 
             <div className="GuestSection">
-                {comments.map(({ id, comment }) => (
+                {comments.map(({ id, comment }, i) => (
                     <Comment
                         key={id}
                         postId={postId}
