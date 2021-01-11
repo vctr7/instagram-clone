@@ -1,4 +1,5 @@
 import './App.css';
+import React from 'react';
 import { useState, useEffect } from 'react';
 import { Route } from 'react-router-dom';
 import { db, auth, storage } from './firebase';
@@ -47,11 +48,10 @@ function App() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [user, setUser] = useState(null);
-
+    const defaultImg = 'https://file3.instiz.net/data/file3/2018/12/13/6/4/8/648508f2dfbf6507e5ea892e968a27cf.jpg';
     const [userImg, setUserImg] = useState(null);
-    const [userImgUrl, setUserImgUrl] = useState(
-        'https://file3.instiz.net/data/file3/2018/12/13/6/4/8/648508f2dfbf6507e5ea892e968a27cf.jpg',
-    );
+    const [userImgUrl, setUserImgUrl] = useState(defaultImg);
+    
     const logoUrl =
         'https://www.instagram.com/static/images/web/mobile_nav_type_logo-2x.png/1b47f9d0e595.png';
 
@@ -60,7 +60,7 @@ function App() {
             if (authUser) {
                 console.log(authUser);
                 setUser(authUser);
-                // setUserImgUrl(user.photoURL);
+                setUserImgUrl(user.photoURL||defaultImg);
             } else {
                 setUser(null);
             }
@@ -258,9 +258,7 @@ function App() {
                                         userImgUrl={userImgUrl}
                                     />
                                 </div>
-                                <div className="Foot">
-                                    © 2021 INSTAGRAM CLONE FROM VCTR
-                                </div>
+                                <Footer/>
                             </div>
                         ) : (
                             <div className="LoginContainer">
@@ -270,9 +268,7 @@ function App() {
                                 <Button onClick={() => setOpen(true)}>
                                     Sign Up
                                 </Button>
-                                <div className="Foot">
-                                    © 2021 INSTAGRAM CLONE FROM VCTR
-                                </div>
+                                <Footer/>
                             </div>
                         )}
 
